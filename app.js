@@ -3,17 +3,14 @@ const express=require('express')
 const mongoose=require('mongoose')
 const RegistrationData =require('./model')
 const AdminData =require('./admin')
-
-const app = express();
-
-app.use(express.json())
 const cors=require('cors')
+const app = express()
+app.use(express.json())
+app.use(cors())
 
 const mongooseData = mongoose.connect('mongodb+srv://bhagyashree:bhagya5799@cluster0.q2xpdj1.mongodb.net/?retryWrites=true&w=majority').then(
     () => console.log('db connected')
 ).catch(err => console.log(err, "DB error running"))
-
-app.use(cors())
 
 // user send details
 app.post("/", async(request,response) =>{
